@@ -1,6 +1,9 @@
 #bower components (install with 'bower install')
 bower_components/
 
+#node modules
+node_modules/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
