@@ -11,7 +11,20 @@
 * **Grunt Contrib watch:** watches our files to allow for real time changes to be seen in our server
 * **Grunt Contrib connnect:** Create a webserver
 
+Simply run:
+```
+npm install
+```
+To install grunt packages.
 
+To run the grunt processes use:
+```
+grunt serve
+```
+
+
+
+All packages have been included as devDependencies and you should not have to run any of the following lines of code:
 ```
 bower install
  npm install -g grunt-cli
@@ -29,5 +42,4 @@ bower install
  npm install grunt-usemin --save-dev
  npm install grunt-contrib-watch --save-dev
  npm install grunt-contrib-connect --save-dev
-  grunt serve
 ```
