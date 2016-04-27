@@ -34,59 +34,60 @@ module.exports = function(grunt) {
             }
         },
         copy: {
-            dist: {
-                src: [ '**', '!styles/**/*.css', '!scripts/**/*.js' ],
-                dest: 'dist',
-                expand: true
-            },
-            fonts: {
-                files: [
-                    {
-                        //for bootstrap fonts
+          dist: {
+            cwd: 'app',
+            src: [ '**','!styles/**/*.css','!scripts/**/*.js' ],
+            dest: 'dist',
+            expand: true
+          },
+          fonts: {
+              files:[
+                  {
+                      //for bootstrap fonts
                         expand: true,
                         dot: true,
                         cwd: 'bower_components/bootstrap/dist',
                         src: ['fonts/*.*'],
                         dest: 'dist'
                     }, {
-                        //for font awesome
+                        //for font-awesome
                         expand: true,
                         dot: true,
                         cwd: 'bower_components/font-awesome',
                         src: ['fonts/*.*'],
                         dest: 'dist'
                     }
-                ]
+              ]
             }
         },
         clean: {
-            build: {
+            build:{
                 src: [ 'dist/']
             }
-        },
+       },
         useminPrepare: {
             html: 'app/menu.html',
             options: {
                 dest: 'dist'
             }
         },
-        //concat
+          // Concat
         concat: {
             options: {
                 separator: ';'
             },
-            //dist configuration is provided by useminPrepare
+            // dist configuration is provided by useminPrepare
             dist: {}
         },
-        //uglify
+          // Uglify
         uglify: {
-            //dist configuration is provided by useminPrepare
+            // dist configuration is provided by useminPrepare
             dist: {}
         },
         cssmin: {
             dist: {}
         },
-        //Filerev
+          // Filerev
         filerev: {
             options: {
                 encoding: 'utf8',
@@ -94,8 +95,8 @@ module.exports = function(grunt) {
                 length: 20
             },
             release: {
-                //filerev: release hashes(md5) all assets (images, js, and css)
-                //in dist directory
+                // filerev:release hashes(md5) all assets (images, js and css )
+                // in dist directory
                 files: [{
                     src: [
                         'dist/scripts/*.js',
@@ -104,12 +105,10 @@ module.exports = function(grunt) {
                 }]
             }
         },
-        
-        // Usemin
-        // Replaces all assets with their revved version in html and css files.
-        // options.assetDirs contains the directories for finding the assets
-        // according to their relative paths
-        
+          // Usemin
+          // Replaces all assets with their revved version in html and css files.
+          // options.assetDirs contains the directories for finding the assets
+          // according to their relative paths
         usemin: {
             html: ['dist/*.html'],
             css: ['dist/styles/*.css'],
@@ -118,29 +117,29 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-        copy: {
-            files: [ 'app/**', '!app/**/*.css', '!app/**/*.js'],
-            tasks: [ 'build' ]
-        },
-        scripts: {
-            files: ['app/scripts/app.js'],
-            tasks:[ 'build']
-        },
-        styles: {
-            files: ['app/styles/mystyles.css'],
-            tasks:['build']
-        },
-        livereload: {
-            options: {
-                livereload: '<%= connect.options.livereload %>'
+            copy: {
+                files: [ 'app/**', '!app/**/*.css', '!app/**/*.js'],
+                tasks: [ 'build' ]
             },
-            files: [
-                'app/{,*/}*.html',
-                '.tmp/styles/{,*/}*.css',
-                'app/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-            ]
-      }
-    },
+            scripts: {
+                files: ['app/scripts/app.js'],
+                tasks:[ 'build']
+            },
+            styles: {
+                files: ['app/styles/mystyles.css'],
+                tasks:['build']
+            },
+            livereload: {
+                options: {
+                    livereload: '<%= connect.options.livereload %>'
+                },
+                files: [
+                    'app/{,*/}*.html',
+                    '.tmp/styles/{,*/}*.css',
+                    'app/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+                ]
+            }
+        },
         connect: {
             options: {
                 port: 9000,
@@ -160,7 +159,7 @@ module.exports = function(grunt) {
                     }
                 }
             }
-        },
+        }
         
     });
     
