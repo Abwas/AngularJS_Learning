@@ -11,11 +11,11 @@
 * **Grunt Contrib watch:** watches our files to allow for real time changes to be seen in our server
 * **Grunt Contrib connnect:** Create a webserver
 
-Simply run:
+To install grunt packages, simply run:
 ```
 npm install
 ```
-To install grunt packages.
+
 
 To run the grunt processes use:
 ```
