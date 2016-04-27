@@ -1,3 +1,6 @@
+#Distribution Folder (What you upload to your server)
+dist/
+
 #bower components (install with 'bower install')
 bower_components/
 
