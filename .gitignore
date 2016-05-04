@@ -1,6 +1,9 @@
 #Distribution Folder (What you upload to your server)
 dist/
 
+#public folder (used for local json-server testing)
+json-server/public/
+
 #bower components (install with 'bower install')
 bower_components/
 
