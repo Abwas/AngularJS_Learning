@@ -8,7 +8,13 @@ angular.module('confusionApp')
             $scope.filtText = '';
             $scope.showDetails = false;
 
-            $scope.dishes= menuFactory.getDishes();
+            $scope.dishes= [];
+            menuFactory.getDishes()
+            .then(
+                function(response) {
+                    $scope.dishes = response.data;
+                }
+            );
 
                         
             $scope.select = function(setTab) {
@@ -54,7 +60,7 @@ angular.module('confusionApp')
                 
                 console.log($scope.feedback);
                 
-                if ($scope.feedback.agree && ($scope.feedback.mychannel == "")) {
+                if ($scope.feedback.agree && ($scope.feedback.mychannel === "")) {
                     $scope.invalidChannelSelection = true;
                     console.log('incorrect');
                 }
@@ -70,9 +76,14 @@ angular.module('confusionApp')
 
         .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
 
-            var dish= menuFactory.getDish(parseInt($stateParams.id,10));
+            $scope.dish = {};
             
-            $scope.dish = dish;
+            menuFactory.getDish(parseInt($stateParams.id,10)).then(
+                function(response) {
+                    $scope.dish = response.data;
+                });
+            
+
             
         }])
 
@@ -90,14 +101,20 @@ angular.module('confusionApp')
                 $scope.commentForm.$setPristine();
                 
                 $scope.mycomment = {rating:5, comment:"", author:"", date:""};
-            }
+            };
         }])
 
         // implement the IndexController and About Controller here
 
         .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
+
             
-            $scope.featured = menuFactory.getDish(0);
+            $scope.featured = {}; 
+            menuFactory.getDish(0).then(
+                function(response) { 
+                    $scope.dish = response.data;
+                }
+            );
             
             $scope.promotion = menuFactory.getPromotion(0);
             
